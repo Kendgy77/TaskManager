@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TaskManager.Data;
+using TaskManager.Models;
 
 namespace TaskManager
 {
@@ -15,6 +17,35 @@ namespace TaskManager
         public MainForm()
         {
             InitializeComponent();
+            LoadTasks(); 
+        }
+
+        
+        private void LoadTasks()
+        {
+            var tasks = TaskRepository.GetAllTasks(); 
+            tasksGridView.DataSource = null;          
+            tasksGridView.DataSource = tasks;         
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            LoadTasks(); 
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            // TODO: відкриття форми додавання завдання
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            // TODO: відкриття форми редагування вибраного завдання
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            // TODO: видалення вибраного завдання
         }
     }
 }

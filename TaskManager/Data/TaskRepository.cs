@@ -7,8 +7,7 @@ using System.Data.SQLite;
 using System.IO;
 using TaskManager.Models;
 
-namespace TaskManager.Data
-{
+
     namespace TaskManager.Data
     {
         public static class TaskRepository
@@ -92,4 +91,4 @@ namespace TaskManager.Data
             }
         }
     }
-}
+
