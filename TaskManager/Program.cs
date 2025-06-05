@@ -14,9 +14,11 @@ namespace TaskManager
         [STAThread]
         static void Main()
         {
+            DatabaseInitializer.Initialize();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
         }
+        
     }
 }
