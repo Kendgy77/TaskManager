@@ -38,10 +38,14 @@
             // 
             // tasksGridView
             // 
+            this.tasksGridView.AllowUserToAddRows = false;
             this.tasksGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tasksGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tasksGridView.Location = new System.Drawing.Point(0, 0);
             this.tasksGridView.Name = "tasksGridView";
-            this.tasksGridView.Size = new System.Drawing.Size(619, 548);
+            this.tasksGridView.ReadOnly = true;
+            this.tasksGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tasksGridView.Size = new System.Drawing.Size(886, 548);
             this.tasksGridView.TabIndex = 0;
             // 
             // addButton

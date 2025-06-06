@@ -25,7 +25,13 @@ namespace TaskManager
         {
             var tasks = TaskRepository.GetAllTasks(); 
             tasksGridView.DataSource = null;          
-            tasksGridView.DataSource = tasks;         
+            tasksGridView.DataSource = tasks;
+
+            tasksGridView.Columns["Id"].Visible = false;
+            tasksGridView.Columns["Title"].HeaderText = "Tytuł";
+            tasksGridView.Columns["Description"].HeaderText = "Opis";
+            tasksGridView.Columns["DueDate"].HeaderText = "Termin";
+            tasksGridView.Columns["IsCompleted"].HeaderText = "Zakończone";
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
