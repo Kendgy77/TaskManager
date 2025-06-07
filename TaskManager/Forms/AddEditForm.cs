@@ -55,11 +55,15 @@ namespace TaskManager
             InitializeComponent();
             currentTask = task;
 
+            
             if (currentTask != null)
             {
+                
                 titleTextBox.Text = currentTask.Title;
                 descriptionTextBox.Text = currentTask.Description;
-                dueDatePicker.Value = DateTime.Parse(currentTask.DueDate);
+                dueDatePicker.Value = DateTime.TryParse(currentTask.DueDate, out DateTime parsedDate)
+                    ? parsedDate
+                    : DateTime.Now;
                 completedCheckBox.Checked = currentTask.IsCompleted;
             }
         }
@@ -103,6 +107,11 @@ namespace TaskManager
             this.Close();
         }
 
-        
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
     }
 }

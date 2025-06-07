@@ -86,7 +86,7 @@
     <Compile Include="Forms\AddEditForm.Designer.cs">
       <DependentUpon>AddEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseInitializer.cs" />
+    <Compile Include="Data\DatabaseInitializer.cs" />
     <Compile Include="Data\TaskRepository.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>

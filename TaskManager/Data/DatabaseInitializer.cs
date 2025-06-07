@@ -8,13 +8,14 @@ using System.IO;
 
 
 
-namespace TaskManager
+namespace TaskManager.Data
 {
     public static class DatabaseInitializer
     {
         public static void Initialize()
         {
-            string dbPath = "Data/tasks.db";
+            string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "tasks.db");
+
             if (!File.Exists(dbPath))
             {
                 SQLiteConnection.CreateFile(dbPath);

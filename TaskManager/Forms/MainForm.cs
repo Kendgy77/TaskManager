@@ -17,14 +17,13 @@ namespace TaskManager
         public MainForm()
         {
             InitializeComponent();
-            LoadTasks(); 
+            LoadTasks();
         }
 
-        
         private void LoadTasks()
         {
-            var tasks = TaskRepository.GetAllTasks(); 
-            tasksGridView.DataSource = null;          
+            var tasks = TaskRepository.GetAllTasks();
+            tasksGridView.DataSource = null;
             tasksGridView.DataSource = tasks;
 
             tasksGridView.Columns["Id"].Visible = false;
@@ -36,22 +35,51 @@ namespace TaskManager
 
         private void refreshButton_Click(object sender, EventArgs e)
         {
-            LoadTasks(); 
+            LoadTasks();
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            // TODO: відкриття форми додавання завдання
+            var form = new AddEditForm();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                LoadTasks(); // оновлення списку після додавання
+            }
         }
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            // TODO: відкриття форми редагування вибраного завдання
+            if (tasksGridView.CurrentRow == null)
+            {
+                MessageBox.Show("Wybierz zadanie do edycji.");
+                return;
+            }
+
+            var selectedTask = (TaskModel)tasksGridView.CurrentRow.DataBoundItem;
+
+            var form = new AddEditForm(selectedTask); // Передаємо обране завдання у форму
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                LoadTasks(); // оновлення списку після редагування
+            }
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            // TODO: видалення вибраного завдання
+            if (tasksGridView.CurrentRow == null)
+            {
+                MessageBox.Show("Wybierz zadanie do usunięcia.");
+                return;
+            }
+
+            var selectedTask = (TaskModel)tasksGridView.CurrentRow.DataBoundItem;
+
+            var confirm = MessageBox.Show($"Czy na pewno chcesz usunąć zadanie '{selectedTask.Title}'?", "Potwierdzenie", MessageBoxButtons.YesNo);
+            if (confirm == DialogResult.Yes)
+            {
+                TaskRepository.DeleteTask(selectedTask.Id); // видаляємо
+                LoadTasks(); // оновлюємо
+            }
         }
     }
 }

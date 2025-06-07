@@ -28,25 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tasksGridView = new System.Windows.Forms.DataGridView();
             this.addButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
             this.refreshButton = new System.Windows.Forms.Button();
+            this.tasksGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.tasksGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tasksGridView
-            // 
-            this.tasksGridView.AllowUserToAddRows = false;
-            this.tasksGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tasksGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tasksGridView.Location = new System.Drawing.Point(0, 0);
-            this.tasksGridView.Name = "tasksGridView";
-            this.tasksGridView.ReadOnly = true;
-            this.tasksGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tasksGridView.Size = new System.Drawing.Size(886, 548);
-            this.tasksGridView.TabIndex = 0;
             // 
             // addButton
             // 
@@ -88,16 +76,27 @@
             this.refreshButton.UseVisualStyleBackColor = true;
             this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
             // 
+            // tasksGridView
+            // 
+            this.tasksGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tasksGridView.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tasksGridView.Location = new System.Drawing.Point(0, 0);
+            this.tasksGridView.Name = "tasksGridView";
+            this.tasksGridView.ReadOnly = true;
+            this.tasksGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.tasksGridView.Size = new System.Drawing.Size(240, 548);
+            this.tasksGridView.TabIndex = 5;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 548);
+            this.Controls.Add(this.tasksGridView);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.addButton);
-            this.Controls.Add(this.tasksGridView);
             this.Name = "MainForm";
             this.Text = "MainForm";
             ((System.ComponentModel.ISupportInitialize)(this.tasksGridView)).EndInit();
@@ -106,11 +105,10 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView tasksGridView;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button editButton;
         private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.DataGridView tasksGridView;
     }
 }

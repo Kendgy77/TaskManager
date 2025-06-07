@@ -36,6 +36,7 @@
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.descriptionTextBox = new System.Windows.Forms.TextBox();
             this.dueDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -113,12 +114,23 @@
             this.dueDatePicker.TabIndex = 8;
             this.dueDatePicker.ValueChanged += new System.EventHandler(this.dueDatePicker_ValueChanged);
             // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(399, 129);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 9;
+            this.cancelButton.Text = "Anuluj";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
             // AddEditForm
             // 
             this.AcceptButton = this.saveButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.dueDatePicker);
             this.Controls.Add(this.descriptionTextBox);
             this.Controls.Add(this.titleTextBox);
@@ -145,5 +157,6 @@
         private System.Windows.Forms.TextBox titleTextBox;
         private System.Windows.Forms.TextBox descriptionTextBox;
         private System.Windows.Forms.DateTimePicker dueDatePicker;
+        private System.Windows.Forms.Button cancelButton;
     }
 }
