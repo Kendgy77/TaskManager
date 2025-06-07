@@ -5,16 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.IO;
+using System.Windows.Forms;
 using TaskManager.Models;
 
 
-    namespace TaskManager.Data
+namespace TaskManager.Data
+{
+    public static class TaskRepository
     {
-        public static class TaskRepository
-        {
-            private static string dbPath = "Data/tasks.db";
+        private static string dbPath = "Data/tasks.db";
 
-            public static void AddTask(TaskModel task)
+        public static void AddTask(TaskModel task)
+        {
+            try
             {
                 using (var connection = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
                 {
@@ -30,10 +33,17 @@ using TaskManager.Models;
                     }
                 }
             }
-
-            public static List<TaskModel> GetAllTasks()
+            catch (Exception ex)
             {
-                var tasks = new List<TaskModel>();
+                MessageBox.Show("Błąd podczas dodawania zadania: " + ex.Message);
+            }
+        }
+
+        public static List<TaskModel> GetAllTasks()
+        {
+            var tasks = new List<TaskModel>();
+            try
+            {
                 using (var connection = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
                 {
                     connection.Open();
@@ -54,11 +64,18 @@ using TaskManager.Models;
                         }
                     }
                 }
-
-                return tasks;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd ładowania zadań: " + ex.Message);
             }
 
-            public static void UpdateTask(TaskModel task)
+            return tasks;
+        }
+
+        public static void UpdateTask(TaskModel task)
+        {
+            try
             {
                 using (var connection = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
                 {
@@ -75,8 +92,15 @@ using TaskManager.Models;
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd podczas aktualizowania zadania: " + ex.Message);
+            }
+        }
 
-            public static void DeleteTask(int taskId)
+        public static void DeleteTask(int taskId)
+        {
+            try
             {
                 using (var connection = new SQLiteConnection($"Data Source={dbPath};Version=3;"))
                 {
@@ -89,6 +113,11 @@ using TaskManager.Models;
                     }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Błąd podczas usuwania zadania: " + ex.Message);
+            }
         }
     }
+}
 

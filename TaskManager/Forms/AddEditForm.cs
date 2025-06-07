@@ -81,30 +81,37 @@ namespace TaskManager
                 return;
             }
 
-            if (currentTask == null)
+            try
             {
-                var newTask = new TaskModel
+                if (currentTask == null)
                 {
-                    Title = title,
-                    Description = description,
-                    DueDate = dueDate,
-                    IsCompleted = isCompleted
-                };
+                    var newTask = new TaskModel
+                    {
+                        Title = title,
+                        Description = description,
+                        DueDate = dueDate,
+                        IsCompleted = isCompleted
+                    };
 
-                TaskRepository.AddTask(newTask);
+                    TaskRepository.AddTask(newTask);
+                }
+                else
+                {
+                    currentTask.Title = title;
+                    currentTask.Description = description;
+                    currentTask.DueDate = dueDate;
+                    currentTask.IsCompleted = isCompleted;
+
+                    TaskRepository.UpdateTask(currentTask);
+                }
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            else
+            catch (Exception ex)
             {
-                currentTask.Title = title;
-                currentTask.Description = description;
-                currentTask.DueDate = dueDate;
-                currentTask.IsCompleted = isCompleted;
-
-                TaskRepository.UpdateTask(currentTask);
+                MessageBox.Show("Wystąpił błąd podczas zapisywania zadania: " + ex.Message, "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            this.DialogResult = DialogResult.OK;
-            this.Close();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)

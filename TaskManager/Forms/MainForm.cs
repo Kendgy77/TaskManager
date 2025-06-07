@@ -22,15 +22,22 @@ namespace TaskManager
 
         private void LoadTasks()
         {
-            var tasks = TaskRepository.GetAllTasks();
-            tasksGridView.DataSource = null;
-            tasksGridView.DataSource = tasks;
+            try
+            {
+                var tasks = TaskRepository.GetAllTasks();
+                tasksGridView.DataSource = null;
+                tasksGridView.DataSource = tasks;
 
-            tasksGridView.Columns["Id"].Visible = false;
-            tasksGridView.Columns["Title"].HeaderText = "Tytuł";
-            tasksGridView.Columns["Description"].HeaderText = "Opis";
-            tasksGridView.Columns["DueDate"].HeaderText = "Termin";
-            tasksGridView.Columns["IsCompleted"].HeaderText = "Zakończone";
+                tasksGridView.Columns["Id"].Visible = false;
+                tasksGridView.Columns["Title"].HeaderText = "Tytuł";
+                tasksGridView.Columns["Description"].HeaderText = "Opis";
+                tasksGridView.Columns["DueDate"].HeaderText = "Termin";
+                tasksGridView.Columns["IsCompleted"].HeaderText = "Zakończone";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Wystąpił błąd podczas ładowania zadań: " + ex.Message);
+            }
         }
 
         private void refreshButton_Click(object sender, EventArgs e)
@@ -40,10 +47,17 @@ namespace TaskManager
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            var form = new AddEditForm();
-            if (form.ShowDialog() == DialogResult.OK)
+            try
             {
-                LoadTasks(); // оновлення списку після додавання
+                var form = new AddEditForm();
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    LoadTasks();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Wystąpił błąd podczas dodawania zadania: " + ex.Message);
             }
         }
 
@@ -55,12 +69,19 @@ namespace TaskManager
                 return;
             }
 
-            var selectedTask = (TaskModel)tasksGridView.CurrentRow.DataBoundItem;
-
-            var form = new AddEditForm(selectedTask); // Передаємо обране завдання у форму
-            if (form.ShowDialog() == DialogResult.OK)
+            try
             {
-                LoadTasks(); // оновлення списку після редагування
+                var selectedTask = (TaskModel)tasksGridView.CurrentRow.DataBoundItem;
+
+                var form = new AddEditForm(selectedTask);
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    LoadTasks();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Wystąpił błąd podczas edytowania zadania: " + ex.Message);
             }
         }
 
@@ -77,8 +98,15 @@ namespace TaskManager
             var confirm = MessageBox.Show($"Czy na pewno chcesz usunąć zadanie '{selectedTask.Title}'?", "Potwierdzenie", MessageBoxButtons.YesNo);
             if (confirm == DialogResult.Yes)
             {
-                TaskRepository.DeleteTask(selectedTask.Id); // видаляємо
-                LoadTasks(); // оновлюємо
+                try
+                {
+                    TaskRepository.DeleteTask(selectedTask.Id);
+                    LoadTasks();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Wystąpił błąd podczas usuwania zadania: " + ex.Message);
+                }
             }
         }
     }
