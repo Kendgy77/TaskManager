@@ -16,6 +16,13 @@ namespace TaskManager.Data
         {
             string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "tasks.db");
 
+            
+            string folderPath = Path.GetDirectoryName(dbPath);
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath); 
+            }
+
             if (!File.Exists(dbPath))
             {
                 SQLiteConnection.CreateFile(dbPath);
@@ -26,13 +33,13 @@ namespace TaskManager.Data
                 connection.Open();
 
                 string createTableQuery = @"
-                CREATE TABLE IF NOT EXISTS Tasks (
-                    Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    Title TEXT NOT NULL,
-                    Description TEXT,
-                    DueDate TEXT NOT NULL,
-                    IsCompleted INTEGER NOT NULL CHECK (IsCompleted IN (0, 1))
-                );";
+        CREATE TABLE IF NOT EXISTS Tasks (
+            Id INTEGER PRIMARY KEY AUTOINCREMENT,
+            Title TEXT NOT NULL,
+            Description TEXT,
+            DueDate TEXT NOT NULL,
+            IsCompleted INTEGER NOT NULL CHECK (IsCompleted IN (0, 1))
+        );";
 
                 using (var command = new SQLiteCommand(createTableQuery, connection))
                 {

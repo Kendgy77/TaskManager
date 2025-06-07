@@ -13,7 +13,8 @@ namespace TaskManager.Data
 {
     public static class TaskRepository
     {
-        private static string dbPath = "Data/tasks.db";
+        private static string dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data", "tasks.db");
+
 
         public static void AddTask(TaskModel task)
         {

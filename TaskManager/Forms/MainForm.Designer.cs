@@ -84,7 +84,7 @@
             this.tasksGridView.Name = "tasksGridView";
             this.tasksGridView.ReadOnly = true;
             this.tasksGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.tasksGridView.Size = new System.Drawing.Size(240, 548);
+            this.tasksGridView.Size = new System.Drawing.Size(619, 548);
             this.tasksGridView.TabIndex = 5;
             // 
             // MainForm

@@ -140,7 +140,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AddEditForm";
-            this.Text = "z`";
+            this.Text = "AddTask";
             this.Load += new System.EventHandler(this.AddEditForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
