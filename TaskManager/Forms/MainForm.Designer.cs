@@ -38,9 +38,9 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(625, 51);
+            this.addButton.Location = new System.Drawing.Point(705, 128);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(75, 23);
+            this.addButton.Size = new System.Drawing.Size(93, 45);
             this.addButton.TabIndex = 1;
             this.addButton.Text = "Dodaj";
             this.addButton.UseVisualStyleBackColor = true;
@@ -48,9 +48,9 @@
             // 
             // editButton
             // 
-            this.editButton.Location = new System.Drawing.Point(625, 80);
+            this.editButton.Location = new System.Drawing.Point(705, 179);
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(75, 23);
+            this.editButton.Size = new System.Drawing.Size(93, 48);
             this.editButton.TabIndex = 2;
             this.editButton.Text = "Edytuj";
             this.editButton.UseVisualStyleBackColor = true;
@@ -58,9 +58,9 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(625, 109);
+            this.deleteButton.Location = new System.Drawing.Point(705, 233);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.Size = new System.Drawing.Size(93, 48);
             this.deleteButton.TabIndex = 3;
             this.deleteButton.Text = "Usuń";
             this.deleteButton.UseVisualStyleBackColor = true;
@@ -68,9 +68,9 @@
             // 
             // refreshButton
             // 
-            this.refreshButton.Location = new System.Drawing.Point(625, 138);
+            this.refreshButton.Location = new System.Drawing.Point(705, 287);
             this.refreshButton.Name = "refreshButton";
-            this.refreshButton.Size = new System.Drawing.Size(75, 23);
+            this.refreshButton.Size = new System.Drawing.Size(93, 48);
             this.refreshButton.TabIndex = 4;
             this.refreshButton.Text = "Odśwież";
             this.refreshButton.UseVisualStyleBackColor = true;
